@@ -1,15 +1,86 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
-    <title>Full Stack Movie Tracker</title>
-  </head>
-  <body>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <title>Full Stack Movie Tracker</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <!-- My CSS -->
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- Primary Structure -->
+
+</head>
+
+<body>
+  <div class="container">
     <header>
-      <h1>Movie Tracker</h1>
+      <div class="row">
+        <div class="one-third column">
+          <img src="images/film-reel.png" alt="film-reel" width="150vw">
+        </div>
+        <div class="two-thirds column">
+          <h2>Full Stack Movie Track</h2>
+        </div>
+      </div>
+      <hr>
     </header>
-    <footer></footer>
-    <script type="text/javascript" src="app.js"></script>
-  </body>
+    <main>
+      <div class="row">
+        <div class="six columns">
+          <label for="userInput">Movie List</label>
+          <select class="u-full-width" id="userInput">
+          <option value="" selected>Pick a Favorite</option>
+          <option value="Option 1">Black Book</option>
+          <option value="Option 2">Trainspotting</option>
+          <option value="Option 3">Hunt for the Wilderpeople</option>
+          <option value="Option 4">The Place Beyond the Pines</option>
+          <option value="Option 5">Ex Machina</option>
+          <option value="Option 6">Ferris Bueller's Day Off</option>
+          <option value="Option 7">House of 1000 Corpses</option>
+          <option value="Option 8">The Hateful Eight</option>
+          <option value="Option 9">Rad</option>
+          <option value="Option 10">Taxi Driver</option>
+        </select>
+        </div>
+
+        <div class="six columns">
+          <label for="userInput">Favorites List</label>
+          <select class="u-full-width" id="userInput">
+          <option value="" selected>Your Favorites</option>
+        </select>
+        </div>
+      </div>
+  </div>
+  </main>
+
+  <footer>
+    <div class="row">
+      <div class="twelve columns">
+        <p>© FSMT 2017</p>
+      </div>
+    </div>
+    </div>
+  </footer>
+  </div>
+
+  <script type="text/javascript" src="app.js"></script>
+
+</body>
+
 </html>

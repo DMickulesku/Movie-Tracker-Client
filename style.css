@@ -1,0 +1,36 @@
+.container {
+  height: 100vh;
+}
+
+header {
+  height: 90px;
+  width: 100vw;
+  color: #606060;
+}
+
+main {
+  height: 100vh;
+}
+
+.twelve.columns {
+  text-align: right;
+}
+
+
+h2 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+p {
+  text-align: right;
+}
+
+footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background-color: white;
+  border-top: 1px solid gray;
+  padding-top: 20px;
+}
