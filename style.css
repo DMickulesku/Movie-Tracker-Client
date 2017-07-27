@@ -3,30 +3,19 @@
 }
 
 header {
-  height: 90px;
-  width: 100vw;
   color: #606060;
 }
 
-main {
-  height: 100vh;
-}
-
-.twelve.columns {
-  text-align: right;
-}
-
-
 h2 {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 60px;
 }
 
 p {
   text-align: right;
 }
 
-footer {
+#footer{
   position: fixed;
   bottom: 0px;
   width: 100%;

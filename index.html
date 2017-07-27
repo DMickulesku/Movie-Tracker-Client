@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
   <!-- My CSS -->
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="./style.css">
 
   <!-- Primary Structure -->
 
@@ -46,37 +46,23 @@
           <label for="userInput">Movie List</label>
           <select class="u-full-width" id="userInput">
           <option value="" selected>Pick a Favorite</option>
-          <option value="Option 1">Black Book</option>
-          <option value="Option 2">Trainspotting</option>
-          <option value="Option 3">Hunt for the Wilderpeople</option>
-          <option value="Option 4">The Place Beyond the Pines</option>
-          <option value="Option 5">Ex Machina</option>
-          <option value="Option 6">Ferris Bueller's Day Off</option>
-          <option value="Option 7">House of 1000 Corpses</option>
-          <option value="Option 8">The Hateful Eight</option>
-          <option value="Option 9">Rad</option>
-          <option value="Option 10">Taxi Driver</option>
         </select>
+          <button class="submitbtn" type="button" name="button">Add to Favorites</button>
         </div>
 
         <div class="six columns">
-          <label for="userInput">Favorites List</label>
-          <select class="u-full-width" id="userInput">
+          <label for="favInput">Favorites List</label>
+          <select class="u-full-width" id="favInput">
           <option value="" selected>Your Favorites</option>
         </select>
+          <button class="removebtn" type="button" name="button">Remove from Favorites</button>
+
         </div>
       </div>
   </div>
   </main>
 
-  <footer>
-    <div class="row">
-      <div class="twelve columns">
-        <!--<p>© FSMT 2017</p>-->
-      </div>
-    </div>
-  </footer>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="app.js"></script>
 
 </body>
