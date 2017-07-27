@@ -22,7 +22,7 @@ function addFavorite() {
   var id = $('#userInput option:selected').val()
   $.get(baseUrl + id)
     .then(function(movie) {
-      $('#favInput').append(`<option value="${movie[0].id}" id="${movie[0].id}">${movie[0].title}</option>`)
+      $('#favInput').append(`<option value="${movie[0].id}" id="f${movie[0].id}">${movie[0].title}</option>`)
     })
   console.log(id);
 }
@@ -31,7 +31,8 @@ function removeFavorite() {
   var id = $('#favInput option:selected').val()
   $.get(baseUrl + id)
     .then(function(movie) {
-      $('#favInput').remove(`<option value="${movie[0].id}" id="${movie[0].id}">${movie[0].title}</option>`)
+      $(`#f${movie[0].id}`).remove()
+      //$('#favInput').remove(`<option value="${movie[0].id}" id="${movie[0].id}">${movie[0].title}</option>`)
     })
   console.log(id);
 }
