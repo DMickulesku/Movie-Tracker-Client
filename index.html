@@ -32,10 +32,10 @@
     <header>
       <div class="row">
         <div class="one-third column">
-          <img src="images/film-reel.png" alt="film-reel" width="150vw">
+          <img src="images/film-reel.png" alt="film-reel" width="200vw">
         </div>
         <div class="two-thirds column">
-          <h2>Full Stack Movie Track</h2>
+          <h1>Full Stack Movie Track</h1>
         </div>
       </div>
       <hr>
@@ -46,18 +46,40 @@
           <label for="userInput">Movie List</label>
           <select class="u-full-width" id="userInput">
           <option value="" selected>Pick a Favorite</option>
-        </select>
+          </select>
           <button class="submitbtn" type="button" name="button">Add to Favorites</button>
+          <button class="deletebtn" type="button" name="button">Remove from List</button>
         </div>
 
         <div class="six columns">
           <label for="favInput">Favorites List</label>
           <select class="u-full-width" id="favInput">
           <option value="" selected>Your Favorites</option>
-        </select>
+          </select>
           <button class="removebtn" type="button" name="button">Remove from Favorites</button>
-
         </div>
+      </div>
+
+      <h4>Add a Movie</h4>
+      <div class="row">
+        <div class="three columns">
+          <label for="titleInput">Movie Title</label>
+          <input type="text">
+        </div>
+        <div class="three columns">
+          <label for="directorInput">Director</label>
+          <input type="text">
+        </div>
+        <div class="three columns">
+          <label for="genreInput">Genre</label>
+          <input type="text">
+        </div>
+        <div class="three columns">
+          <label for="yearInput">Release Year</label>
+          <input type="text">
+          <button class="addMovie" type="button" name="button">Add Movie to List</button>
+        </div>
+
       </div>
   </div>
   </main>

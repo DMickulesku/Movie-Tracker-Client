@@ -3,20 +3,21 @@ $(document).ready(function() {
   $('.submitbtn').click(addFavorite)
   $('.removebtn').click(removeFavorite)
 })
-var baseUrl = 'https://secret-taiga-92136.herokuapp.com/movies/'
+var baseUrl =
+  //var baseUrl = 'https://secret-taiga-92136.herokuapp.com/movies/'
 
-function getMovies() {
-  $.get('https://secret-taiga-92136.herokuapp.com/movies')
-    .then(function(data) {
-      console.log(data);
+  function getMovies() {
+    $.get('https://secret-taiga-92136.herokuapp.com/movies')
+      .then(function(data) {
+        console.log(data);
 
-      for (var i = 0; i < data.length; i++) {
-        $('#userInput').append(
-          `<option value="${data[i].id}" id="${data[i].id}">${data[i].title}</option>`
-        )
-      }
-    })
-}
+        for (var i = 0; i < data.length; i++) {
+          $('#userInput').append(
+            `<option value="${data[i].id}" id="${data[i].id}">${data[i].title}</option>`
+          )
+        }
+      })
+  }
 
 function addFavorite() {
   var id = $('#userInput option:selected').val()
@@ -27,12 +28,20 @@ function addFavorite() {
   console.log(id);
 }
 
+//function removeFavorite() {
+//  var id = $('#favInput option:selected').val()
+//  $.get(baseUrl + id)
+//    .then(function(movie) {
+//      $(`#f${movie[0].id}`).remove()
+//    })
+//  console.log(id);
+//}
+
 function removeFavorite() {
-  var id = $('#favInput option:selected').val()
-  $.get(baseUrl + id)
+  var id = $('#userInput option:selected').val(
+    $.get(baseUrl + id)
     .then(function(movie) {
-      $(`#f${movie[0].id}`).remove()
-      //$('#favInput').remove(`<option value="${movie[0].id}" id="${movie[0].id}">${movie[0].title}</option>`)
+      $(`#f${movie[0].id}`)
     })
-  console.log(id);
+  )
 }
