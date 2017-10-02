@@ -1,21 +1,34 @@
 $(document).ready(function() {
-  // getMovies();
-  // $('.submitBtn').click(addFavorite)
-  // $('.removeBtn').click(removeFavorite)
-  // $('.deleteBtn').click(deleteMovie)
-  // $('.addMovieBtn').click(addMovie)
-  $.get('http://localhost:4000/movies')
+  $.get(baseUrl)
     .then(getMovies)
+
+
+  $('.deleteBtn').click(removeMovie)
+  $('.editBtn').click(editMovie)
 
 }) //closing line 1
 
-function calculateAge(yearOfBirth) {
-  var age = 2017 - yearOfBirth;
-  return age;
-}
+var baseUrl = 'https://secret-taiga-92136.herokuapp.com/movies'
+// const baseUrl = 'http://localhost:4000/movies/'
 
-var ageJohn = calculateAge(1990);
-console.log(ageJohn);
+function addMovie(event) {
+
+  var postObj = {
+    title: $('#titleInput').val(),
+    director: $('#directorInput').val(),
+    genre: $('#genreInput').val(),
+    year: $('#yearInput').val()
+  }
+
+
+  $.post(baseUrl, postObj)
+    .then(function(res) {
+      console.log(res);
+    })
+  .then(data => {
+    window.location.reload()
+  })
+} // closing line 10
 
 function getMovies(data) {
   console.log(data);
@@ -25,59 +38,108 @@ function getMovies(data) {
     var director = data[i].director
     var genre = data[i].genre
     var year = data[i].year_released
+    var id = data[i].id
 
-    var titleGroup = `<div class = "${title}">
+    var titleGroup = `<div class = "${id}">
     <h6>${title}</h6>
     </div>`
-    var directorGroup = `<div class = "${director}">
+    var directorGroup = `<div class = "${id}">
     <h6>${director}</h6>
     </div>`
-    var genreGroup = `<div class = "${genre}">
+    var genreGroup = `<div class = "${id}">
     <h6>${genre}</h6>
     </div>`
-    var yearGroup = `<div class = "${year}">
+    var yearGroup = `<div class = "${id}">
     <h6>${year}</h6>
     </div>`
+    var dropTitle = `<option data-title= "${title}" data-director= "${director}" data-genre= "${genre}" data-year= "${year}" class= "${id}" id= ${id} value= "${title}">${title}</option>`
 
-    $('#movieTitles').append(titleGroup)
-    $('#director').append(directorGroup)
-    $('#genre').append(genreGroup)
-    $('#year').append(yearGroup)
+    $('#userInput').append(dropTitle)
+
   }
-} // closing line 13
+  $('#userInput').change(appendMovieToTable)
+  $('.addMovieBtn').click(addMovie)
+} // closing line 29
 
-function addFavorite() {
-  var id = $('#userInput option:selected').val()
-  $.get(baseUrl + id)
+function removeMovie() {
+  var id = $('#userInput option:selected').attr("id")
+  $.ajax({
+    url: baseUrl + id,
+    method: "DELETE"
+  })
     .then(function(movie) {
-      $('#favInput').append(`<option value="${movie[0].id}" id="f${movie[0].id}">${movie[0].title}</option>`)
+       $(`.${movie.deleted[0].id}`).remove()
+      console.log("movie deleted");
+      console.log(movie);
     })
+
   console.log(id);
 }
 
-function removeFavorite() {
-  var id = $('#favInput option:selected').val()
-  $.get(baseUrl + id)
-    .then(function(movie) {
-      $(`#f${movie[0].id}`).remove()
-    })
-  console.log(id);
+function appendMovieToTable() {
+  var title = $('#userInput option:selected').attr('data-title');
+  var director = $('#userInput option:selected').attr('data-director');
+  var genre = $('#userInput option:selected').attr('data-genre');
+  var year = $('#userInput option:selected').attr('data-year');
+  var id = $('#userInput option:selected').attr('id');
+
+  var titleHTML = `<td><div class = "${id}"><h6>${title}</h6></div></td>`
+  var directorHTML = `<td><div class = "${id}"><h6>${director}</h6></div></td>`
+  var genreHTML = `<td><div class = "${id}"><h6>${genre}</h6></div></td>`
+  var yearHTML = `<td><div class = "${id}"><h6>${year}</h6></div></td>`
+
+  $('tbody').append(`
+    <tr>
+      ${titleHTML}
+      ${directorHTML}
+      ${genreHTML}
+      ${yearHTML}
+    </tr>
+    `)
+  populateEditFields(title, director, genre, year, id)
 }
 
-function addMovie() {
-  var title = $('#titleInput').val()
-  var director = $('#directorInput').val()
-  var genre = $('#genreInput').val()
-  var year = $('#yearInput').val()
-
-  var postObj = {}
-  postObj.title = title
-  postObj.director = director
-  postObj.genre = genre
-  postObj.year = year
-
-
-
-  $.post('https://secret-taiga-92136.herokuapp.com/movies', postObj)
+function populateEditFields(title, director, genre, year, id) {
+  $('.editTitle').val(title)
+  $('.editDirector').val(director)
+  $('.editGenre').val(genre)
+  $('.editYear').val(year)
 
 }
+
+function editMovie() {
+  console.log('hello');
+  var title = $('.editTitle').val()
+  var director = $('.editDirector').val()
+  var genre = $('.editGenre').val()
+  var year = $('.editYear').val()
+  var id = $('#userInput option:selected').attr('id');
+  var editObj = {
+    title: title,
+    director: director,
+    genre: genre,
+    year_released: year
+  }
+  $.ajax({
+    url: baseUrl + id,
+    method: "PUT",
+    data: editObj
+  })
+  .then(function(edited){
+    console.log(edited);
+  })
+}
+
+// function setEditToTable() {
+//   var title = $('.editTitle').val()
+//   var director = $('.editDirector').val()
+//   var genre = $('.editGenre').val()
+//   var year = $('.editYear').val()
+//   var id = $('')
+//   var editFormObj = {
+//     title : title,
+//     director : director,
+//     genre : genre,
+//     year_released : year
+//   }
+// }

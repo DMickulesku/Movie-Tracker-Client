@@ -36,7 +36,6 @@
         </div>
         <div class="two-thirds column">
           <h1>Full Stack Movie Track</h1>
-          <p>add something different</p>
         </div>
       </div>
       <hr>
@@ -63,11 +62,20 @@
           <input id="yearInput" type="text" value="">
           <button class="addMovieBtn" type="button" name="button">Add Movie to List</button>
         </div>
+        <hr>
       </div>
 
+      <select class="u-full-width" id="userInput">
+      <option value="" selected>Pick a Movie</option>
+      </select>
+      <button class="deleteBtn" type="button" name="button">Remove from List</button>
+      <hr>
+
+
+      <h4>Movie List</h4>
       <div class="row">
         <div class="twelve columns">
-          <label for="userInput">Movie List</label>
+          <label for="userInput"></label>
 
           <table class="u-full-width">
             <thead>
@@ -79,25 +87,31 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td id="movieTitles"></td>
-                <td id="director"></td>
-                <td id="genre"></td>
-                <td id="year"></td>
-              </tr>
+              <!-- Movie List appends here -->
             </tbody>
           </table>
-              <select class="u-full-width" id="userInput">
-          <option value="" selected>Pick a Movie</option>
-          </select>
-              <button class="deleteBtn" type="button" name="button">Remove from List</button>
+        <div class="row">
+          <div class="three columns">
+            <td><input class = "editTitle" type="text" name="" value=""></td>
+          </div>
+          <div class="three columns">
+            <td><input class = "editDirector" type="text" name="" value=""></td>
+          </div>
+          <div class="three columns">
+            <td><input class = "editGenre" type="text" name="" value=""></td>
+          </div>
+          <div class="three columns">
+            <td><input class = "editYear" type="text" name="" value=""></td>
+          </div>
+        </div>
+          <button class="editBtn" type="button" name="button">Edit Movie</button>
         </div>
       </div>
     </main>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
-
+  </div>
 </body>
 
 </html>
