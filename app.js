@@ -8,8 +8,8 @@ $(document).ready(function() {
 
 }) //closing line 1
 
-var baseUrl = 'https://secret-taiga-92136.herokuapp.com/movies'
-// const baseUrl = 'http://localhost:4000/movies/'
+// var baseUrl = 'https://secret-taiga-92136.herokuapp.com/movies'
+const baseUrl = 'http://localhost:4000/movies/'
 
 function addMovie(event) {
 
@@ -23,7 +23,6 @@ function addMovie(event) {
 
   $.post(baseUrl, postObj)
     .then(function(res) {
-      console.log(res);
     })
   .then(data => {
     window.location.reload()
@@ -31,7 +30,6 @@ function addMovie(event) {
 } // closing line 10
 
 function getMovies(data) {
-  console.log(data);
   for (var i = 0; i < data.length; i++) {
 
     var title = data[i].title
@@ -69,11 +67,7 @@ function removeMovie() {
   })
     .then(function(movie) {
        $(`.${movie.deleted[0].id}`).remove()
-      console.log("movie deleted");
-      console.log(movie);
     })
-
-  console.log(id);
 }
 
 function appendMovieToTable() {
@@ -83,10 +77,10 @@ function appendMovieToTable() {
   var year = $('#userInput option:selected').attr('data-year');
   var id = $('#userInput option:selected').attr('id');
 
-  var titleHTML = `<td><div class = "${id}"><h6>${title}</h6></div></td>`
-  var directorHTML = `<td><div class = "${id}"><h6>${director}</h6></div></td>`
-  var genreHTML = `<td><div class = "${id}"><h6>${genre}</h6></div></td>`
-  var yearHTML = `<td><div class = "${id}"><h6>${year}</h6></div></td>`
+  var titleHTML = `<td><div class = "${id} title"><h6>${title}</h6></div></td>`
+  var directorHTML = `<td><div class = "${id} director"><h6>${director}</h6></div></td>`
+  var genreHTML = `<td><div class = "${id} genre"><h6>${genre}</h6></div></td>`
+  var yearHTML = `<td><div class = "${id} year"><h6>${year}</h6></div></td>`
 
   $('tbody').append(`
     <tr>
@@ -108,7 +102,6 @@ function populateEditFields(title, director, genre, year, id) {
 }
 
 function editMovie() {
-  console.log('hello');
   var title = $('.editTitle').val()
   var director = $('.editDirector').val()
   var genre = $('.editGenre').val()
@@ -121,25 +114,21 @@ function editMovie() {
     year_released: year
   }
   $.ajax({
-    url: baseUrl + id,
+    url: baseUrl + '/' + id,
     method: "PUT",
     data: editObj
   })
   .then(function(edited){
-    console.log(edited);
+    var title = edited[0].title
+    var director = edited[0].director
+    var genre = edited[0].genre
+    var year = edited[0].year_released
+    var id = edited[0].id
+
+    $(`.${id}.title`).text(title)
+    $(`.${id}.director`).text(director)
+    $(`.${id}.genre`).text(genre)
+    $(`.${id}.year`).text(year)
+
   })
 }
-
-// function setEditToTable() {
-//   var title = $('.editTitle').val()
-//   var director = $('.editDirector').val()
-//   var genre = $('.editGenre').val()
-//   var year = $('.editYear').val()
-//   var id = $('')
-//   var editFormObj = {
-//     title : title,
-//     director : director,
-//     genre : genre,
-//     year_released : year
-//   }
-// }
