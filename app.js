@@ -8,8 +8,8 @@ $(document).ready(function() {
 
 }) //closing line 1
 
-// var baseUrl = 'https://secret-taiga-92136.herokuapp.com/movies'
-const baseUrl = 'http://localhost:4000/movies/'
+var baseUrl = 'https://secret-taiga-92136.herokuapp.com/movies'
+// const baseUrl = 'http://localhost:4000/movies/'
 
 function addMovie(event) {
 
