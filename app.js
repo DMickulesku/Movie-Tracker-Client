@@ -62,7 +62,7 @@ function getMovies(data) {
 function removeMovie() {
   var id = $('#userInput option:selected').attr("id")
   $.ajax({
-    url: baseUrl + id,
+    url: baseUrl + '/' + id,
     method: "DELETE"
   })
     .then(function(movie) {
